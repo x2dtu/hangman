@@ -1,38 +1,326 @@
-.App {
+:root {
+  --button-width: 4em;
+  --grid-gap: 0.5em;
+  --blank-width: 3em;
+  --blank-height: 2.5em;
+  --base-height: 1.25em;
+  --beam-width: 1em;
+  --post-height: 26em;
+  --post-x: 4em;
+  --hoz-beam-width: 8em;
+  --rope-height: 3.75em;
+  --diameter: 3.5em;
+  --rope-offset: 0em;
+  --rope-width: calc(var(--beam-width) / 2);
+  --rope-left: calc(var(--post-x) + var(--hoz-beam-width) - var(--rope-width) - var(--rope-offset));
+  --rope-bottom: calc(var(--post-height) - var(--beam-width) - var(--rope-height));
+  --face-left: calc(var(--rope-left) - (var(--diameter) / 2) + (var(--rope-width) / 2));
+  --face-bottom: calc(var(--rope-bottom) - var(--diameter));
+  --body-height: 6.5em;
+  --body-width: 0.75em;
+  --body-left: calc(var(--rope-left) - (var(--body-width) / 2) + (var(--rope-width) / 2));
+  --body-bottom: calc(var(--face-bottom) - var(--body-height) + 0.1em);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-areas:
+    "post blank"
+    "post letter";
+}
+
+.lettersLeft {
+  grid-area: letter;
+  margin: 0.5em;
+  display: flex;
+  max-width: calc(9 * (var(--button-width) + 2 * var(--grid-gap)));
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.letter {
+  width: var(--button-width);
+  height: var(--button-width);
+  text-align: center;
+  border-radius: 0.5em;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: rgb(233, 247, 252);
+  color: rgb(50, 74, 78);
+  font-weight: bold;
+  font-size: 1em;
+  margin: var(--grid-gap);
+  transition: 1ms ease all;
+  box-shadow: 3px 3px 2px black;
+}
+
+.word {
+  margin-right: 2em;
+  display: flex;
+}
+
+.blanks {
+  margin: 0.5em;
+  padding-top: 0em;
+  display: flex;
+  max-width: calc(9 * (var(--blank-width) + 2 * var(--grid-gap)));
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.blankContainer {
+  grid-area: blank;
+  width: var(--blank-width);
+  height: var(--blank-height);
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.blankText {
+  text-align: center;
+  align-self: center;
+  font-weight: bold;
+  font-size: 2em;
+  min-height: 1.14em;
+}
+
+.blank {
+  background-color: black;
+  justify-self: flex-end;
+  align-self: center;
+  height: 0.2em;
+  width: 100%;
+}
+
+.postContainer {
+  grid-area: post;
+  width: 20em;
+  height: 26em;
+  position: relative;
+  margin: 1em;
+}
+
+.postContainer div:not(.face) {
+  background-color: black;
+}
+
+.post {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  height: var(--base-height);
+}
+
+.pole {
+  position: absolute;
+  left: var(--post-x);
+  bottom: 0%;
+  width: var(--beam-width);
+  height: var(--post-height);
+}
+
+.support {
+  position: absolute;
+  left: var(--post-x);
+  bottom: calc(var(--post-height) - 2.5em);
+  height: var(--beam-width);
+  width: 4.5em;
+  transform: rotate(-45deg);
+}
+
+.horizontalBeam {
+  position: absolute;
+  left: var(--post-x);
+  bottom: calc(var(--post-height) - var(--beam-width));
+  height: var(--beam-width);
+  width: var(--hoz-beam-width);
+}
+
+.rope {
+  position: absolute;
+  left: var(--rope-left);
+  bottom: var(--rope-bottom);
+  width: calc(var(--beam-width) / 2);
+  height: var(--rope-height);
+}
+
+.face {
+  position: absolute;
+  left: var(--face-left);
+  bottom: var(--face-bottom);
+  width: var(--diameter);
+  height: var(--diameter);
+  border: 0.3em solid black;
+  border-radius: 100%;
+}
+
+.body {
+  position: absolute;
+  left: var(--body-left);
+  bottom: var(--body-bottom);
+  width: var(--body-width);
+  height: var(--body-height);
+}
+
+.leftArm {
+  position: absolute;
+  left: calc(var(--body-left) - 3em);
+  bottom: calc(var(--body-bottom) + 5em);
+  width: var(--rope-height);
+  height: 0.5em;
+  transform: rotate(-135deg);
+}
+
+.rightArm {
+  position: absolute;
+  left: calc(var(--body-left));
+  bottom: calc(var(--body-bottom) + 5em);
+  width: var(--rope-height);
+  height: 0.5em;
+  transform: rotate(-45deg);
+}
+
+.leftLeg {
+  position: absolute;
+  left: calc(var(--body-left) - 3.1em);
+  bottom: calc(var(--body-bottom) - 1.75em);
+  width: calc(var(--rope-height) + 1em);
+  height: 0.5em;
+  transform: rotate(120deg);
+}
+
+.rightLeg {
+  position: absolute;
+  left: calc(var(--body-left) - 0.9em);
+  bottom: calc(var(--body-bottom) - 1.75em);
+  width: calc(var(--rope-height) + 1em);
+  height: 0.5em;
+  transform: rotate(60deg);
+}
+
+.letter:hover,
+.letter:focus {
+  background-color: white;
+  border: 3px solid black;
+  box-shadow: 1px 1px black;
+}
+
+.letter:disabled {
+  background-color: #ddd;
+  color: rgb(150, 150, 150);
+  cursor: default;
+}
+
+.letter:disabled:hover {
+  border: 1px solid black;
+  box-shadow: 3px 3px 2px black;
+}
+
+.modal {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: white;
+  text-align: center;
+  width: 30rem;
+  height: 19rem;
+  z-index: 10;
+  position: fixed;
+  top: 20vh;
+  left: calc(50% - 15rem);
+}
+
+.modal * {
+  margin: 0.5em;
+}
+
+.modal p:not(.smallWords) {
+  font-size: 2em;
+  margin: 1em;
+}
+
+.modal button,
+.submit {
+  border-radius: 1em;
+  border: 2px solid rgb(127, 219,
+      167);
+  height: 2.5em;
+  padding: 0 1em;
+  cursor: pointer;
+  background-color: white;
+}
+
+.modal button:hover,
+.modal button:focus,
+.submit:hover,
+.submit:focus {
+  border: 3px solid black;
+  background-color: white;
+  color: black;
+  background-color: rgb(241, 240, 240);
+}
+
+.textInput {
+  border-radius: 1em;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.2);
+  height: 5em;
+  width: 25em;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.randContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.specialChar {
+  margin-left: -1.5em;
+  margin-right: -0.5em;
+  padding-top: 0.5em;
+}
+
+.smallWords {
+  font-size: 1em;
+  margin-bottom: 2em;
+}
+
+.flexDivContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexDivContainer>* {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.flexDivContainer>*:hover {
+  margin-left: 0.95em;
+  margin-right: 0.95em;
+}
+
+.specialNum {
+  margin-left: -0.5em;
 }
