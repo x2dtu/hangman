@@ -23,6 +23,7 @@ const Modal = ({ dispatch }) => {
               <div>
                 <p>Welcome to Hangman!</p>
                 <input
+                  autoComplete="off"
                   className="textInput"
                   type="text"
                   placeholder="Type Phrase You Want Opponent To Guess Here"
