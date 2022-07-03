@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Hangman
+This is the classic game of hangman created with react. It can either be played one-player or two-players. Please email me at 3069391@gmail.com or comment on this project page should you have any questions about the game, suggestions for further improvement, or have found any bugs.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Screenshots
+<div style="display: flex">
+<img src="https://user-images.githubusercontent.com/82241006/177058859-6c78daa9-ce8e-4d28-a937-c572fb0f5900.png" alt="Start Menu" width="500" />
+<img src="https://user-images.githubusercontent.com/82241006/177058891-d83e64ba-2d24-4dc0-8bc9-e7706dd891ef.png" alt="random words" width="500" />
+<img src="https://user-images.githubusercontent.com/82241006/177058950-41e98c6a-69c0-40c9-a332-05737e157ae3.png" alt="Playing the Game" width="500" />
+<img src="https://user-images.githubusercontent.com/82241006/177058969-e63853c4-f669-412e-8b88-2a96e4da4b44.png" alt="Game Won" width="500" />
+<img src="https://user-images.githubusercontent.com/82241006/177058992-416e6e4f-9fdb-4d17-b53b-13e54835a003.png" alt="Game Lost" width="500" />
+</div>
 
-## Available Scripts
+## Setup Instructions
+1. First, download the source code, either by executing a `git clone https://github.com/x2dtu/hangman.git` in a terminal or downloading the project as a zip through the Github page and extracting that zip.
+2. This project uses npm and node to run, so make sure to have both installed on your computer before you try to run this. <br>
+In a terminal at the project directory,
+3. Run `npm install` to install the necessary packages.
+4. Run `npm start` to start the app. Enjoy!
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Controls and Features
+If you are playing by yourself, it would be most fun to choose the start menu option for a random word, of which you can choose to guess a random food, activity, movie, U.S. state, or U.S. President. If you are playing with two people, then you can either choose a random word and work together or you can play against each other with the opponent typing out a phrase that the guesser has to guess. Once the word or phrase is picked, you can either click the keyboard buttons to pick a letter or type on your computer's keyboard. Watch out, as 6 wrong letter guesses will lose you the game!
